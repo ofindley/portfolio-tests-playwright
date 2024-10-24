@@ -10,6 +10,7 @@ This test automation suite is designed to verify the functionality of [Orane Fin
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Running Tests](#running-tests)
+- [Reporting](#reporting)
 - [Continuous Integration](#continuous-integration)
 - [Contributing](#contributing)
 
@@ -54,10 +55,30 @@ portfolio-test-automation/
 
 ## Running Tests
 
-To run the tests, use the following command:
+To run all tests, use the following command:
 
 ```
 npx playwright test
+```
+
+Alternatively, you can use the following shortcut:
+
+```
+npm test
+```
+
+To run all tests in headed mode, use the following command:
+
+```
+npx playwright test --headed
+```
+
+## Reporting
+
+To generate a HTML test report, use the following command:
+
+```
+npx playwright show-report
 ```
 
 ## Continuous Integration
