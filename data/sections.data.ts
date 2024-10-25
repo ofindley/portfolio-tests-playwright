@@ -1,3 +1,8 @@
+export const heroSection = {
+  profilePicSrc: "orane-profile.jpeg",
+  profilePicAlt: "Image of Orane Findley",
+};
+
 export const aboutSection = {
   title: "Introduction",
 };
