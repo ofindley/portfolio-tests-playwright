@@ -21,4 +21,18 @@ test.describe("Main Page", () => {
       "/images/favicon/favicon"
     );
   });
+
+  test("Verify hero section is displayed by default", async ({ page }) => {
+    await expect(mainPage.heroSection).toBeInViewport();
+  });
+
+  test("Verify scroll to top functionality", async ({ page }) => {
+    // Scroll to the bottom of the page
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+
+    await mainPage.scrollToTopBtn.click();
+    await expect(mainPage.heroSection).toBeInViewport();
+  });
 });
