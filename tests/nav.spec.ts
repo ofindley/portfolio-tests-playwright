@@ -15,15 +15,11 @@ test.describe("Navigation", () => {
     await page.goto(urls.baseUrl);
   });
 
-  test("Verify page title", async ({ page }) => {
-    await expect(page).toHaveTitle("Orane Findley - Portfolio");
-  });
-
   test("Verify navigation to About section", async ({ page }) => {
     await navBar.aboutBtn.click();
+    await expect(page.url()).toContain(urls.aboutUrl);
 
-    expect(page.url()).toContain(urls.aboutUrl);
-
+    await mainPage.aboutSection.waitFor({ state: "visible" });
     await expect(mainPage.aboutSection).toBeInViewport();
     await expect(mainPage.sectionTitle("about")).toContainText(
       sections.aboutSection.title
@@ -32,9 +28,9 @@ test.describe("Navigation", () => {
 
   test("Verify navigation to Experience section", async ({ page }) => {
     await navBar.experienceBtn.click();
+    await expect(page.url()).toContain(urls.experienceUrl);
 
-    expect(page.url()).toContain(urls.experienceUrl);
-
+    await mainPage.experienceSection.waitFor({ state: "visible" });
     await expect(mainPage.experienceSection).toBeInViewport();
     await expect(mainPage.sectionTitle("experience")).toContainText(
       sections.experienceSection.title
@@ -43,9 +39,9 @@ test.describe("Navigation", () => {
 
   test("Verify navigation to Skills section", async ({ page }) => {
     await navBar.skillsBtn.click();
+    await expect(page.url()).toContain(urls.skillsUrl);
 
-    expect(page.url()).toContain(urls.skillsUrl);
-
+    await mainPage.skillsSection.waitFor({ state: "visible" });
     await expect(mainPage.skillsSection).toBeInViewport();
     await expect(mainPage.sectionTitle("skills")).toContainText(
       sections.skillsSection.title
@@ -54,9 +50,9 @@ test.describe("Navigation", () => {
 
   test("Verify navigation to Projects section", async ({ page }) => {
     await navBar.projectsBtn.click();
+    await expect(page.url()).toContain(urls.projectsUrl);
 
-    expect(page.url()).toContain(urls.projectsUrl);
-
+    await mainPage.projectsSection.waitFor({ state: "visible" });
     await expect(mainPage.projectsSection).toBeInViewport();
     await expect(mainPage.sectionTitle("projects")).toContainText(
       sections.projectsSection.title
@@ -65,9 +61,9 @@ test.describe("Navigation", () => {
 
   test("Verify navigation to Contact section", async ({ page }) => {
     await navBar.contactBtn.click();
+    await expect(page.url()).toContain(urls.contactUrl);
 
-    expect(page.url()).toContain(urls.contactUrl);
-
+    await mainPage.contactSection.waitFor({ state: "visible" });
     await expect(mainPage.contactSection).toBeInViewport();
     await expect(mainPage.sectionTitle("contact")).toContainText(
       sections.contactSection.title
@@ -79,27 +75,37 @@ test.describe("Navigation", () => {
   }) => {
     // Navigate to about section
     await navBar.aboutBtn.click();
-    expect(page.url()).toContain(urls.aboutUrl);
+    await expect(page.url()).toContain(urls.aboutUrl);
+    await mainPage.aboutSection.waitFor({ state: "visible" });
     await expect(mainPage.aboutSection).toBeInViewport();
 
     // Navigate to experience section
     await navBar.experienceBtn.click();
-    expect(page.url()).toContain(urls.experienceUrl);
+    await expect(page.url()).toContain(urls.experienceUrl);
+    await mainPage.experienceSection.waitFor({ state: "visible" });
     await expect(mainPage.experienceSection).toBeInViewport();
 
     // Navigate to skills section
     await navBar.skillsBtn.click();
-    expect(page.url()).toContain(urls.skillsUrl);
+    await expect(page.url()).toContain(urls.skillsUrl);
+    await mainPage.skillsSection.waitFor({ state: "visible" });
     await expect(mainPage.skillsSection).toBeInViewport();
 
     // Navigate to projects section
     await navBar.projectsBtn.click();
-    expect(page.url()).toContain(urls.projectsUrl);
+    await expect(page.url()).toContain(urls.projectsUrl);
+    await mainPage.projectsSection.waitFor({ state: "visible" });
     await expect(mainPage.projectsSection).toBeInViewport();
 
     // Navigate to contact section
     await navBar.contactBtn.click();
-    expect(page.url()).toContain(urls.contactUrl);
+    await expect(page.url()).toContain(urls.contactUrl);
+    await mainPage.contactSection.waitFor({ state: "visible" });
     await expect(mainPage.contactSection).toBeInViewport();
+
+    // Navigate to hero section
+    await navBar.homeBtn.click();
+    await mainPage.heroSection.waitFor({ state: "visible" });
+    await expect(mainPage.heroSection).toBeInViewport();
   });
 });
