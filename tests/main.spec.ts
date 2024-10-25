@@ -35,4 +35,17 @@ test.describe("Main Page", () => {
     await mainPage.scrollToTopBtn.click();
     await expect(mainPage.heroSection).toBeInViewport();
   });
+
+  test("Verify user can toggle dark/light theme", async ({ page }) => {
+    // Ensure we start in light mode
+    await mainPage.setLightTheme();
+
+    // Toggle to dark mode
+    await mainPage.themeToggleBtn.click();
+    await expect(mainPage.html).toHaveClass(/dark/);
+
+    // Toggle back to light mode
+    await mainPage.themeToggleBtn.click();
+    await expect(mainPage.html).not.toHaveClass(/dark/);
+  });
 });
