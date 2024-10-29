@@ -22,3 +22,7 @@ export const projectsSection = {
 export const contactSection = {
   title: "Get in Touch",
 };
+
+export const resume = {
+  fileName: "OF_2024_SDET_Resume.pdf",
+};
