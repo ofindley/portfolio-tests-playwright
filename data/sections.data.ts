@@ -24,5 +24,5 @@ export const contactSection = {
 };
 
 export const resume = {
-  fileName: "OF_2024_SDET_Resume.pdf",
+  fileName: "Orane_Findley_Resume.pdf",
 };
