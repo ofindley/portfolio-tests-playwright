@@ -31,4 +31,25 @@ test.describe("Projects Section", () => {
     await expect(mainPage.projectsSection).toBeVisible();
     await mainPage.verifySectionElementsHaveText("projects");
   });
+
+  test("Verify navigation between projects works correctly", async ({
+    page,
+  }) => {
+    await navBar.projectsBtn.click();
+    await mainPage.projectCards.first().waitFor({ state: "visible" });
+    await expect(mainPage.projectCards.first()).toBeInViewport();
+
+    await mainPage.nextProjectsBtn.click();
+    await mainPage.projectCards.waitFor({ state: "visible" });
+    await expect(mainPage.projectCards).toBeInViewport();
+
+    await mainPage.previousProjectsBtn.click();
+    await mainPage.projectCards.first().waitFor({ state: "visible" });
+    await expect(mainPage.projectCards.first()).toBeInViewport();
+  });
+
+  test("Verify project card headers are semibold", async ({ page }) => {
+    await navBar.projectsBtn.click();
+    await mainPage.verifyTagHasClass("projects", "h3", "font-semibold");
+  });
 });

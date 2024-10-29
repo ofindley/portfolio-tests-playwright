@@ -11,19 +11,36 @@ export class MainPage {
   readonly heroSection: Locator;
   readonly profilePic: Locator;
 
+  // About section
   readonly aboutSection: Locator;
-  readonly experienceSection: Locator;
-  readonly skillsSection: Locator;
-  readonly projectsSection: Locator;
-  readonly contactSection: Locator;
 
+  // Experience section
+  readonly experienceSection: Locator;
+
+  // Skills section
+  readonly skillsSection: Locator;
+  readonly skillsSearchInput: Locator;
+
+  // Projects section
+  readonly projectsSection: Locator;
+  readonly previousProjectsBtn: Locator;
+  readonly nextProjectsBtn: Locator;
+  readonly projectCards: Locator;
+
+  // Contact section
+  readonly contactSection: Locator;
   readonly linkedinBtn: Locator;
   readonly githubBtn: Locator;
   readonly twitterBtn: Locator;
   readonly emailBtn: Locator;
+  readonly downloadResumeBtn: Locator;
+  readonly viewResumeBtn: Locator;
 
   readonly scrollToTopBtn: Locator;
   readonly themeToggleBtn: Locator;
+
+  readonly resumeModal: Locator;
+  readonly resumeIframe: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -43,9 +60,17 @@ export class MainPage {
 
     // Skills section
     this.skillsSection = page.locator("#skills");
+    this.skillsSearchInput = this.skillsSection.locator("#skills-search");
 
     // Projects section
     this.projectsSection = page.locator("#projects");
+    this.projectCards = this.projectsSection.locator(" .card");
+    this.previousProjectsBtn = this.projectsSection.locator(
+      "[aria-label='Previous projects']"
+    );
+    this.nextProjectsBtn = this.projectsSection.locator(
+      "[aria-label='Next projects']"
+    );
 
     // Contact section
     this.contactSection = page.locator("#contact");
@@ -53,9 +78,14 @@ export class MainPage {
     this.githubBtn = this.contactSection.locator("a[aria-label='GitHub']");
     this.twitterBtn = this.contactSection.locator("a[aria-label='Twitter']");
     this.emailBtn = this.contactSection.locator("#contact-me");
+    this.downloadResumeBtn = this.contactSection.locator("#download-resume");
+    this.viewResumeBtn = this.contactSection.locator("#view-resume");
 
     this.scrollToTopBtn = page.locator("#scroll-to-top");
     this.themeToggleBtn = page.locator("#theme-toggle");
+
+    this.resumeModal = page.locator('[role="dialog"]');
+    this.resumeIframe = this.resumeModal.locator("iframe");
   }
 
   async navigateToSection(section: string) {
